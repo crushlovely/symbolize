@@ -78,7 +78,7 @@ module Mongoid
             if enum.is_a?(Hash)
               values = enum
             else
-              values = {}
+              values = ActiveSupport::OrderedHash.new
               enum.map do |val|
                 key = val.respond_to?(:to_sym) ? val.to_sym : val
                 values[key] = capitalize ? val.to_s.capitalize : val.to_s
